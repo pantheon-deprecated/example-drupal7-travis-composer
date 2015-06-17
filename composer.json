@@ -1,0 +1,72 @@
+{
+    "name": "pantheon-systems/example-drupal7-composer",
+    "description": "Example project for installing a Drupal 7 site with Composer.",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://packagist.drupal-composer.org/"
+        },
+
+        {
+            "type": "package",
+            "package": {
+                "name": "pantheon-systems/drops-7",
+                "type": "drupal-core",
+                "version": "7.37",
+                "source": {
+                    "url": "https://github.com/pantheon-systems/drops-7.git",
+                    "type": "git",
+                    "reference": "master"
+                },
+                "replace": {
+                    "drupal/drupal": "7.37"
+                }
+            }
+        }
+    ],
+    "require": {
+        "pantheon-systems/drops-7": "7.*",
+        "drupal/admin_menu": "7.3.*",
+        "drupal/devel": "7.1.*",
+        "drupal/responsive_bartik": "7.1.*"
+    },
+    "require-dev": {
+        "davidbarratt/custom-installer": "dev-master",
+        "derhasi/composer-preserve-paths": "0.1.*",
+        "pantheon-systems/travis-scripts": "1.*",
+        "drupal/composer_vendor": "7.1.*"
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "./bin/init-new-project"
+        ]
+    },
+    "config": {
+        "bin-dir": "bin/",
+        "vendor-dir": "drupal/sites/all/vendor"
+    },
+    "extra": {
+        "custom-installer": {
+            "drupal-module": "drupal/sites/all/modules/contrib/{$name}/",
+            "drupal-theme": "drupal/sites/all/themes/contrib/{$name}/",
+            "drupal-library": "drupal/sites/all/libraries/{$name}/",
+            "drupal-drush": "drupal/sites/all/drush/{$name}/",
+            "drupal-profile": "drupal/profiles/{$name}/",
+            "drupal-core": "drupal/"
+        },
+        "preserve-paths": [
+            "drupal/sites/all/modules/contrib",
+            "drupal/sites/all/modules/custom",
+            "drupal/sites/all/modules/modified",
+            "drupal/sites/all/themes/contrib",
+            "drupal/sites/all/themes/custom",
+            "drupal/sites/all/libraries",
+            "drupal/sites/all/drush",
+            "drupal/sites/all/vendor",
+            "drupal/sites/default/settings.php",
+            "drupal/sites/default/files"
+        ]
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
