@@ -651,20 +651,20 @@
         },
         {
             "name": "derhasi/composer-preserve-paths",
-            "version": "0.1.1",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/derhasi/composer-preserve-paths.git",
-                "reference": "81e5107df239f1ad9e142ecab15d498fba34b080"
+                "reference": "13309cebd530c3f5e9bfa238aa496076a644540b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/derhasi/composer-preserve-paths/zipball/81e5107df239f1ad9e142ecab15d498fba34b080",
-                "reference": "81e5107df239f1ad9e142ecab15d498fba34b080",
+                "url": "https://api.github.com/repos/derhasi/composer-preserve-paths/zipball/13309cebd530c3f5e9bfa238aa496076a644540b",
+                "reference": "13309cebd530c3f5e9bfa238aa496076a644540b",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "1.0.0"
+                "composer-plugin-api": "^1.0"
             },
             "require-dev": {
                 "composer/composer": "1.0.*@dev",
@@ -699,7 +699,7 @@
                 "installer",
                 "nested package"
             ],
-            "time": "2015-01-07 15:57:00"
+            "time": "2015-06-17 18:21:27"
         },
         {
             "name": "doctrine/instantiator",
