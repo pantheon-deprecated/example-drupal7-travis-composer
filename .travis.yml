@@ -1,0 +1,96 @@
+#
+# Example .travis.yml file.
+#
+# Copy to your project and rename to .travis.yml.
+# Customize per the instructions below.
+#
+language: php
+
+php:
+  - 5.5
+
+mysql:
+  database: drupal
+  username: root
+  encoding: utf8
+
+env:
+  global:
+    # Your site's name -- used in `drush site-install`.
+    - SITE_NAME='Example Drupal7 Composer'
+
+    # Your Pantheon site's idenfying name (i.e. as shown on the dashboard)
+    - PSITE='example-drupal7-composer'
+
+    # The Pantheon environment to push to after tests succeed.
+    - PENV='dev'
+
+    # SECRET/PRIVATE VARIABLES
+    #
+    # These are created by using the travis command locally to encrypt some values.
+    #
+    # See: http://docs.travis-ci.com/user/build-configuration/#Secure-environment-variables
+    #
+    # PEMAIL environment variable: represents the Pantheon account e-mail with
+    # access to this site. Used to authenticate to Pantheon via Terminus. You
+    # must cd to your project root and run:
+    #
+    # travis encrypt PEMAIL='test@example.com'
+    #
+    - secure: "t1ss0bIddLsNPgwgzHg/F8rjMPxkBAfrQQqUvOFFEkxSo0AddM8smQPIQl8WsPg/k5ifIwpUQzcZvRALZufmEFAupceSSTifudxVD1Q5/mWNAQVUeTOgI514g/bzMFI4XkXTuV6bHuqZGQQOI8YmYmRWLOmUITsBijpDmjpkHwQmcd/hsOVRwFGzqDg4/sMxqY3T6dL1LFAENgUxQ89KoNq2aYly6nLgdqPGPLBBCIFjdby2vcn7CwVBA5NUvN3QzSkMddaZeBqF4o84gSFwD7u5XjeJ5Y6PI+POzcutcIlhx7Gkv1k+8HgREYkvrQs4DgK7ww/DFoIfCfN70cua0vXzKIYI63Tc5bb+Pnfcc8MA7yYzRTpzE9iRdvS5pzWpv4L0fEUBsZ7tGAVe3ZCzX+0WV4XahY1ED9QTDC/6zDu/L7IxQkHqWAu0xqnHUEutr71HPByfXdpW3aN0ou1GPTkMtqrH0qpoTxU/2t5zQF2LBzNoBTycsD0zVskas2A1GAsUAlGSmSi0rVaj7a00JdvABDRQ7MfGtCucIHTihyTKQPTGIDLtsqGywdcxC1b7XZEEZAkQPhUlYUIINcyqKDYuZA8qEaTt3Cbl87vQaieqcP0OToZ0xCJ1LochJ24Q08gZ5eXxQrhHt/Fsri8Df7vwfzvGf+ckGjIn6x2UVQI="
+    #
+    # PPASS environment variable: represents the Pantheon account password for
+    # the above encrypted e-mail address. Run:
+    #
+    # travis encrypt PPASS='my_account_password'
+    #
+    secure: "JD4m4Nf9FuUnfWT3bHViyQeW/GqyfJiVZLiB/ud/IonXwLn9maPtUXyG7CY9UzBImJVEGda+/GW6VPX7dLHcEiAISJOiKZ7Apk5mcrzAUtadoz0YHqeIbnqzVts8HtxbqkVOs+7AvEffm+atgXvbcf5uWdjv+kVsddndNipB81oRFwSYsjnPat1KMJnxRiLQHjK5ex2EneJruDm36inG7G4NxL7J4gId132uxPLL2pBZ8lt1zaqmsWzGRqzLsbvjyHp/ue8Bnv2xqGpHSXujtS458E8HrDBc+YfPCyvte/7hRdAXhJCO2PgDtaZmIf8dGLvwoPU85SWASPaBehNGael6gXeTRf7mAhPtz6wVFrCmgqitHWwNus/jd9Ew/YiFKno+XITNpg5qrcuSAUIXcFXoYODNIlXAlPolV95xM7By9u+dnhFKNvWB8gQm3M7enoWaIvadyqW63CGMwDVPAmgVf3NlV3bA7MurMmM8JYOqrwIiVRsCN7+bBsiZ8WOtJYAEAg3Z5rOzTMaS3wSNMmwwJDB2WZJsdAydjBz/4le21tLE5YW0YIOMD0bNMEUynhX79V2XcWhuVtqy5InQf0cGzGM4Th17WllHOZlZd22/KNwK/oMWpSumbrE4nQPvMbc3bGnqjiC1vCCHAijKQXZoaTzfAsJrRvTq2MN7Qk0="
+
+before_install:
+  # Make sure composer is up-to-date
+  - composer self-update
+  # Get netstat
+  - sudo apt-get update -qq
+  - sudo apt-get install net-tools
+
+
+install:
+  - composer install
+
+before_script:
+  # Set the 'sendmail_path' to point to the program 'true'; this
+  # will cause the system to discard any emails Drupal tries to send.
+  - echo "sendmail_path='true'" >> `php --ini | grep "Loaded Configuration" | awk '{print $4}'`
+
+script:
+  # Run our behat tests on Travis
+  # Install Drupal and launch the PHP built-in webserver
+  - bash bin/setup-before-tests
+  - ./bin/behat
+
+after_success:
+  # Place a passphrase-free ssh key so that you can clone and push to your
+  # Pantheon git repository.
+  #
+  # Use the travis encrypt-file command to generate your own.
+  #
+  # See: http://docs.travis-ci.com/user/encrypting-files/
+  #
+  # - openssl aes-256-cbc -K $encrypted_dbae4a756345_key -iv $encrypted_dbae4a756345_iv -in travis/travis-ci-key.enc -out ~/.ssh/id_rsa -d
+  # - chmod 0600 ~/.ssh/id_rsa
+  # - bash bin/push-to-pantheon
+
+after_failure:
+  - if [ -f $HOME/server.log ] ; then echo "Server log:" && cat $HOME/server.log ; fi
+
+after_script:
+  - bin/stop-webserver
+  - rm $HOME/server.log
+
+notifications:
+  email:
+    recipients:
+      # - ci-notifications@myorg.org
+    on_success: always
+    on_failure: always
+
