@@ -21,7 +21,7 @@ There are two ways to quickly create a new project for your Drupal site, using t
 
 #### Via Composer
 ```
-$ composer create-project pantheon-systems/example-drupal7-composer project '*'
+$ composer create-project pantheon-systems/example-drupal7-composer my-new-project-name '1.*'
 ```
 
 ## Configuration
