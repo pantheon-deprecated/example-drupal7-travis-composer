@@ -1,6 +1,6 @@
 {
     "name": "pantheon-systems/example-drupal7-composer",
-    "description": "Run `composer install` followed by `bin/init-new-project` to replace this file and set up your starting project.",
+    "description": "Template for creating a project to manage a Drupal site with Composer, and test with Travis CI.  Run `composer install` followed by `bin/init-new-project` to replace this file and set up your starting project.",
     "require": {
     },
     "require-dev": {
