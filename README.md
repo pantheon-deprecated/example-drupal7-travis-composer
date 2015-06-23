@@ -16,11 +16,12 @@ There are two ways to quickly create a new project for your Drupal site, using t
 * [Fork this project in GitHub](https://github.com/pantheon-systems/example-drupal7-composer#fork-destination-box)
 * Clone your fork locally
 * `$ cd example-drupal7-composer`
+* `composer install`
 * `$ ./bin/init-new-project`
 
 #### Via Composer
 ```
-$ composer create-project pantheon-systems/example-drupal7-composer project '1.*'
+$ composer create-project pantheon-systems/example-drupal7-composer project '*'
 ```
 
 ## Configuration
