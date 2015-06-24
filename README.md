@@ -19,27 +19,29 @@ There are two ways to quickly create a new project for your Drupal site, using t
 * `composer install`
 * `$ ./bin/init-new-project`
 
+The `init-new-project` script will set up the local files you will need, and commit them to your local git repository.
+
 #### Via Composer
 ```
-$ composer create-project pantheon-systems/example-drupal7-composer my-new-project-name '1.*'
+$ composer create-project pantheon-systems/example-drupal7-composer my-new-project-name
 ```
+
+The `composer create-project` will download the base files you need for your new project, then run the `init-new-poroject` script to set things up.  The results are committed to a local git repository.  You might wish to [push your repository up to GitHub](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/).
 
 ## Configuration
 
-Once you have created a new project, you will need to customize some of the files created to suit your particular needs.  See the [travis-scripts README](https://github.com/pantheon-systems/travis-scripts) for instructions on how to do this.
+Once you have created a new project, you will still need to do some customization steps to suit your  particular needs.  See the [travis-scripts README](https://github.com/pantheon-systems/travis-scripts) for instructions on how to do this.
 
 ## Testing Locally
 ```
 $ ./bin/local-test
 ```
 
+The `local-test` script will set up a local Drupal site, run it with the PHP built-in webserver, and then run the Behat test suite.  This is analagous to what happens on Travis on every commit.
+
 ## Repository Management
-
-If you followed the instructions  above to create your project, then a suitable .gitignore file will already have been created for you.  You may therefore simply add and commit the modified files to your repository.
-
-#### Custom Modules and Themes
 
 You may place your custom modules and themes in `drupal/sites/all/modules/custom` and `drupal/sites/all/themes/custom`, respectively, and commit them to the same repository that contains your composer.json file.
 
-If you prefer, you may instead create a Composer project for them, and add them to your composer.json file.  See [Creating your very own Composer Package](https://knpuniversity.com/screencast/question-answer-day/create-composer-package) for details on how to do this.
+If you prefer, you may instead create a Composer project for your custom components, and add them to your composer.json file.  It is not necessary to make your code publicly accessible in order to do this; it is possible to create a local composer package definition that points to a private GitHub repository. See [Creating your very own Composer Package](https://knpuniversity.com/screencast/question-answer-day/create-composer-package) for details on different ways to create composer packages.
 
