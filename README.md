@@ -9,6 +9,8 @@ This project utilizes the [pantheon-systems/travis-scripts](https://github.com/p
 
 ## Create a New Project
 
+Before you begin, you should first [install composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx).
+
 There are two ways to quickly create a new project for your Drupal site, using this project as a template.
 
 #### Via GitHub
@@ -44,4 +46,11 @@ The `local-test` script will set up a local Drupal site, run it with the PHP bui
 You may place your custom modules and themes in `drupal/sites/all/modules/custom` and `drupal/sites/all/themes/custom`, respectively, and commit them to the same repository that contains your composer.json file.
 
 If you prefer, you may instead create a Composer project for your custom components, and add them to your composer.json file.  It is not necessary to make your code publicly accessible in order to do this; it is possible to create a local composer package definition that points to a private GitHub repository. See [Creating your very own Composer Package](https://knpuniversity.com/screencast/question-answer-day/create-composer-package) for details on different ways to create composer packages.
+
+Additional modules may be added using Composer:
+```
+$ cd my-new-project-name
+$ composer require drupal/devel '7.*'
+```
+This will put the specified module in `sites/all/modules/contrib`, and will also update your composer.json file with the information on the module that was just added.
 
