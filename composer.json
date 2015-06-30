@@ -73,7 +73,6 @@
         }
     ],
     "require": {
-        "pantheon-systems/travis-scripts": "*",
         "davidbarratt/custom-installer": "dev-master",
         "derhasi/composer-preserve-paths": "0.1.*",
         "drupal/composer_vendor": "7.1.*",
@@ -84,6 +83,7 @@
         "drupal/responsive_bartik": "7.1.*"
     },
     "require-dev": {
+        "pantheon-systems/travis-scripts": "*"
     },
     "scripts": {
         "post-create-project-cmd": [
