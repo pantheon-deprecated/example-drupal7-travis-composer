@@ -27,7 +27,7 @@
                     "drupal/color": "self.version",
                     "drupal/comment": "self.version",
                     "drupal/contact": "self.version",
-                    "drupal/translation": "7.37",
+                    "drupal/translation": "self.version",
                     "drupal/contextual": "self.version",
                     "drupal/dashboard": "self.version",
                     "drupal/dblog": "self.version",
