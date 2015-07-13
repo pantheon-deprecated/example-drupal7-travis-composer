@@ -75,6 +75,7 @@
     "require": {
         "davidbarratt/custom-installer": "dev-master",
         "derhasi/composer-preserve-paths": "0.1.*",
+        "cweagans/composer-patches": "~1.0",
         "drupal/composer_vendor": "7.1.*",
 
         "pantheon-systems/drops-7": "7.*",
