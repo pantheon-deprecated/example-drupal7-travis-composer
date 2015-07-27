@@ -15,9 +15,9 @@ There are two ways to quickly create a new project for your Drupal site, using t
 
 #### Via GitHub
 
-* [Fork this project in GitHub](https://github.com/pantheon-systems/example-drupal7-composer#fork-destination-box)
+* [Fork this project in GitHub](https://github.com/pantheon-systems/example-drupal7-travis-composer#fork-destination-box)
 * Clone your fork locally
-* `$ cd example-drupal7-composer`
+* `$ cd example-drupal7-travis-composer`
 * `composer install`
 * `$ ./bin/init-new-project`
 
@@ -25,7 +25,7 @@ The `init-new-project` script will set up the local files you will need, and com
 
 #### Via Composer
 ```
-$ composer create-project pantheon-systems/example-drupal7-composer my-new-project-name
+$ composer create-project pantheon-systems/example-drupal7-travis-composer my-new-project-name
 ```
 
 The `composer create-project` will download the base files you need for your new project, then run the `init-new-poroject` script to set things up.  The results are committed to a local git repository.  You might wish to [push your repository up to GitHub](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/).

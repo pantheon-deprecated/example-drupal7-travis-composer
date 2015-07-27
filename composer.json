@@ -1,5 +1,5 @@
 {
-    "name": "pantheon-systems/example-drupal7-composer",
+    "name": "pantheon-systems/example-drupal7-travis-composer",
     "description": "Template for creating a project to manage a Drupal site with Composer, and test with Travis CI.  Use `composer create-project` to make your own project, or, if you prefer to clone the git repository, run `composer install` followed by `bin/init-new-project` to replace this file and set up your starting project.",
     "repositories": [
         {
