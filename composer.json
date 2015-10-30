@@ -11,7 +11,7 @@
             "type": "package",
             "package": {
                 "name": "pantheon-systems/drops-7",
-                "type": "drupal-root",
+                "type": "drupal-core",
                 "version": "7.40",
                 "source": {
                     "url": "https://github.com/pantheon-systems/drops-7.git",
@@ -76,9 +76,11 @@
         "composer/installers": "^1.0.21",
         "derhasi/composer-preserve-paths": "0.1.*",
         "cweagans/composer-patches": "~1.0",
-        "drupal/composer_vendor": "7.1.*",
 
         "pantheon-systems/drops-7": "7.*",
+
+        "drupal/composer_vendor": "7.1.*",
+
         "drupal/admin_menu": "7.3.*",
         "drupal/devel": "7.1.*",
         "drupal/responsive_bartik": "7.1.*"
@@ -102,7 +104,7 @@
             "drupal/sites/all/drush/{$name}/": ["type:drupal-drush"],
             "drupal/sites/all/libraries/{$name}/": ["type:drupal-library"],
             "drupal/profiles/{$name}/": ["type:drupal-profile"],
-            "drupal/": ["type:drupal-root"]
+            "drupal/": ["type:drupal-core"]
         },
         "preserve-paths": [
             "drupal/sites/all/modules/contrib",
